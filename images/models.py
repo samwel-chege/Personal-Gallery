@@ -25,6 +25,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def delete_category(self):
+        self.delete()        
         
  
 class Images(models.Model):
