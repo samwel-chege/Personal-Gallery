@@ -15,26 +15,20 @@
     <div class="container">
         <h4>Welcome to your photos gallery senor</h4>
         <div class="row">
+          
             {% for image in images %}
             <div class="card" style="width: 18rem;">
-                <img src="{{image.image.url}}" class="img-responsive" alt="">
+                <img src="{{image.image.url}}" class="img-responsive" data-bs-toggle="modal" data-bs-target="#modal{{image.id}}" alt="">
                 <div class="card-body">
                   <h5 class="card-title">{{image.image_name}} </h5>
-                  <p class="card-text"> {{image.image_description}} </p>
-                  <p class="card-text"> {{image.image_location}} </p>
-                  <p class="card-text"> {{image.image_category}} </p>
-                  <a href="#" class="card-link">copy </a>
-                  <a href="#" class="card-link">delete</a>
                 </div>
               </div>
             <br>
+
+            {% include 'modal.html'%}
             {% endfor %}
         </div>
         </div>
-
-        
-    
-
 </body>
 </html>
 {% endblock %}
