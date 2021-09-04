@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
 from django.db.models.expressions import F
 
 # Create your models here.
@@ -12,6 +13,9 @@ class Location(models.Model):
     def __str__(self):
         return self.city
 
+    def delete_location(self):
+        self.delete()    
+
 class Category(models.Model):
     name = models.CharField(max_length=20)
 
@@ -24,11 +28,11 @@ class Category(models.Model):
         
  
 class Images(models.Model):
-    image = models.ImageField(upload_to = 'photos')
+    image = models.ImageField(upload_to = 'photos',default = 'no photo')
     image_name = models.TextField()
     image_description = models.TextField()
-    image_location = models.ManyToManyField(Location) 
-    image_category = models.ManyToManyField(Category)
+    image_location = models.ForeignKey(Location,on_delete=CASCADE) 
+    image_category = models.ForeignKey(Category,on_delete=CASCADE)
 
     def save_image(self):
         self.save()
@@ -36,6 +40,10 @@ class Images(models.Model):
     def delete_image(self):
         self.save()
     
+    @classmethod
+    def search_by_category(cls,category):
+        images=cls.objects.filter(image_category__name__icontains=category)
+        return images
 
 
     
