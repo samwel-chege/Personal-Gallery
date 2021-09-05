@@ -16,7 +16,7 @@
         <div class="row">
           
             {% for image in images %}
-            <div class="col-sm-6 col-md-3">
+            <div class="col-md-3">
             <div class="card" style="width: 18rem;">
                 <img src="{{image.image.url}}" class="img-responsive" data-bs-toggle="modal" data-bs-target="#modal{{image.id}}" alt="">
                 <div class="card-body">
@@ -24,10 +24,9 @@
                 </div>
               </div>
             <br>
-
+              </div>
             {% include 'modal.html'%}
             {% endfor %}
-        </div>
         </div>
       </div>
 </body>
