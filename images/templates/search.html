@@ -13,15 +13,17 @@
 
   <div class="row">
 
-  <!-- {% if images %} -->
     {% for image in images %}
-      <div class="col-md-3">
-          <img src="{{image.image.url}}" alt="image" style="height: 20rem; width: 30rem;"></img>
-          <br>
+    <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+        <img src="{{image.image.url}}" class="img-responsive" data-bs-toggle="modal" data-bs-target="#modal{{image.id}}" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{image.image_description}} </h5>
+        </div>
       </div>
-      
+    <br>
+      </div>
     {% endfor %}
-  <!-- {% endif %} -->
   </div>
 </div>
 {% endblock %}
