@@ -4,7 +4,7 @@
 
   <div class="row">
     {% if images%}
-      <h2>Found {{ images|length }} of searched term {{message}}</h2>
+      <h2 style="color: royalblue;">{{message}}</h2>
     {% else %}
       <h2> Found 0 images for the search term {{message}}</h2>
     {% endif %}
@@ -14,7 +14,7 @@
   <div class="row">
 
     {% for image in images %}
-    <div class="col-md-4">
+    <div class="col-sm-3">
     <div class="card" style="width: 18rem;">
         <img src="{{image.image.url}}" class="img-responsive" data-bs-toggle="modal" data-bs-target="#modal{{image.id}}" alt="">
         <div class="card-body">
